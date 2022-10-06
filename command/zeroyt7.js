@@ -59,12 +59,13 @@ var tebaktebakan = db.data.game.tebakan = []
 var vote = db.data.others.vote = []
 
 //━━━━━━━━━━━━━━━[ MODULE EXPORTS ]━━━━━━━━━━━━━━━━━//
-
+lolkey = '8e66d0934cf741bfd2182c16'
+xteam = 'apikeyaine'
 module.exports = zeroyt7 = async (zeroyt7, m, chatUpdate, store) => {
 try {
 var body = (m.mtype === 'conversation') ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ''
  var budy = (typeof m.text == 'string' ? m.text : '')
-var prefix = prefa ? /^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi.test(body) ? body.match(/^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi)[0] : "" : prefa ?? global.prefix
+var prefix = prefa ? /^[][°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi.test(body) ? body.match(/^[][°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi)[0] : "" : prefa ?? global.prefix
 var isCmd = body.startsWith(prefix)
 var command = body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase()
 var args = body.trim().split(/ +/).slice(1)
@@ -112,7 +113,7 @@ mute: false,
 antilink: false,
 }
 
-var creator = '©Created By : Zero YT7'
+var creator = '©Created By : Naufal Muflih'
 		
 let setting = global.db.data.settings[botNumber]
 if (typeof setting !== 'object') global.db.data.settings[botNumber] = {}
@@ -180,6 +181,26 @@ if (isCreator) return m.reply(`Ehh maaf kamu owner bot ku`)
 zeroyt7.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
 }
 }
+
+if (db.data.chats[m.chat].antilinkinstagram) {
+  if (budy.match(`https://instagram.com`)) {
+  m.reply(`「 ANTI LINK Instagram 」\n\nKamu terdeteksi mengirim link group, maaf kamu akan di kick !`)
+  if (!isBotAdmins) return m.reply(`Ehh bot gak admin T_T`)
+  if (isgclink) return m.reply(`Ehh maaf gak jadi, karena kamu ngirim link group ini`)
+  if (isAdmins) return m.reply(`Ehh maaf kamu admin`)
+  if (isCreator) return m.reply(`Ehh maaf kamu owner bot ku`)
+  zeroyt7.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+  }
+  }
+
+  if (db.data.chats[m.chat].antilinkyoutube) {
+    if (budy.match(`chat.whatsapp.com`)) {
+    m.reply(`「 ANTI LINK YOUTUBE」\n\nKamu terdeteksi mengirim link Youtube, maaf kamu akan di kick !`)
+    if (isAdmins) return m.reply(`Ehh maaf kamu admin`)
+    if (isCreator) return m.reply(`Ehh maaf kamu owner bot ku`)
+    zeroyt7.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+    }
+    }
         
 //━━━━━━━━━━━━━━━[ MUTE ]━━━━━━━━━━━━━━━━━//
 
@@ -481,7 +502,7 @@ Please Choose an Order Below
 🐰Bot Name : global.botname
 🦅Owner : global.owner
 🐶Owner Name : global.packname
-🐭Creator : Zero YT7
+🐭Creator : Naufal Muflih
 
 ❖ [ List All Menu ] ❖
 
@@ -534,12 +555,12 @@ Please Choose an Order Below
 let btn = [{
 urlButton: {
 displayText: 'Rest Api`s',
-url: 'https://zeroyt7-api.xyz'
+url: 'https://naufalmuflih-api.xyz'
 }
 }, {
 urlButton: {
 displayText: 'My Youtube',
-phoneNumber: 'https://youtube.com/ZeroYT7'
+phoneNumber: 'https://youtube.com/naufalmuflih'
 }
 }, {
 quickReplyButton: {
@@ -564,15 +585,11 @@ case 'sc': case 'script': case 'sourcecode': {
 teks =`❖ Source Code By ❖
 
 Author : Zero YT7
-Youtube : https://youtube.com/ZeroYT7
-Instagram : https://instagram.com/Zero_YT7
-Tiktok : https://tiktok.com/@_zeroyt7
-
-❖ Link Base Script ❖
-https://github.com/Zero-YT7/BaseMD-ZeroYT7
+Youtube : https://youtube.com/naufalmuflih
+Instagram : https://instagram.com/nauffhdkz
 
 Big Thanks To
-• Zero YT7
+• Naufal Muflih
 • Dhika Ardhiant
 • Mhankbarbar
 • Chaliph
@@ -583,12 +600,12 @@ Big Thanks To
 let btn = [{
 urlButton: {
 displayText: 'Rest Api`s',
-url: 'https://zeroyt7-api.xyz'
+url: 'https://naufalmuflih-api.xyz'
 }
 }, {
 urlButton: {
 displayText: 'My Youtube',
-phoneNumber: 'https://youtube.com/ZeroYT7'
+phoneNumber: 'https://youtube.com/naufalmuflih'
 }
 }, {
 quickReplyButton: {
@@ -1046,6 +1063,26 @@ hadiah: 6,
 }
 }
 break
+case 'tebakangka':  
+			         F = body.slice(12)
+                    if (args.length < 1) return reply(`[❗] Example :\n*${prefix}${command} 9`)
+                    anu = await fetchJson(`https://api.xteam.xyz/game/tebakangka?q=${F}&APIKEY=${Xteam}`)
+                    anu1 = `➻ *KAMU* : ${anu.jawabanmu}\n`
+                    anu1 += `➻ *BOT* : ${anu.jawabanbot}\n`
+                    anu1 += `➻ *HASIL* : ${anu.hasil}\n`
+                    anu1 += `➻ *POINT* : ${anu.poin}\n`
+                    reply(anu1)
+                    break
+case 'tebakumur':
+		                    if (args.length == 0) return reply(`Contoh: ${prefix + command} Fernazer`)
+                    ini_name = args.join(" ")
+                    if (args.length == 0) return reply(`Contoh: ${prefix + command} Fernazer`)
+                    get_result = await fetchJson(`http://api.lolhuman.xyz/api/tebakumur?apikey=${lolkey}&name=${ini_name}`)
+                    get_result = get_result.result
+                    ini_txt = `Nama : ${get_result.name}\n`
+                    ini_txt += `Umur : ${get_result.age}`
+                    reply(ini_txt)
+                    break
 case 'tebak': {
 if (!text) throw `Example : ${prefix + command} lagu\n\nOption : \n1. lagu\n2. gambar\n3. kata\n4. kalimat\n5. lirik\n6. lontong`
 if (args[0] === "lagu") {
@@ -1259,6 +1296,10 @@ fs.unlinkSync(ran)
 })
 }
 break
+case 'randompatrick':
+                   anu = await getBuffer(`http://lolhuman.herokuapp.com/api/sticker/patrick?apikey=${lolkey}`)
+                    client.sendMessage(from, anu, sticker, {quoted:mek})
+                    break
 case 'sticker': case 's': case 'stickergif': case 'sgif': {
 if (!quoted) throw `Balas Video/Image Dengan Caption ${prefix + command}`
 m.reply(mess.wait)
